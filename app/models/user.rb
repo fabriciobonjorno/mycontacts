@@ -3,6 +3,9 @@
 class User < ApplicationRecord
   has_secure_password
 
+  # Relationships
+  has_many :contacts, dependent: :destroy
+
   # Validates
   validates :name, :password_digest, :email, presence: true
   validates :email, uniqueness: { case_sensitive: false }
