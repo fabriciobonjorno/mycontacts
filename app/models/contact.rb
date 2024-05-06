@@ -7,6 +7,7 @@ class Contact < ApplicationRecord
   # Validates
   validates :name, :document, :email, presence: true
   validates :email, :document, uniqueness: { case_sensitive: false, scope: %i[user_id] }
+  validate :valid_document
 
   # Normalizes
   normalizes :email, with: -> { _1.strip.downcase }
