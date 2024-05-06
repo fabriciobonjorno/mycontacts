@@ -11,7 +11,12 @@ Rails.application.routes.draw do
   # root "posts#index"
   namespace :api do
     namespace :v1 do
-      resources :register, only: %i[create update destroy]
+      namespace :register do
+        post :create
+        post :confirm
+        post :reset_password
+        post :update_password
+      end
     end
   end
 end

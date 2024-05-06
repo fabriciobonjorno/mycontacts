@@ -25,6 +25,12 @@ class User < ApplicationRecord
     save
   end
 
+  def generate_reset_password
+    self.password_reset_token = SecureRandom.urlsafe_base64
+    self.password_reset_sent_at = Time.now
+    save
+  end
+
   # Private methods
   private
 
