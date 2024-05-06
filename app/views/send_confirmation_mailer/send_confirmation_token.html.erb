@@ -1,0 +1,3 @@
+<p>Prezado <%= @user.name.split(' ').first %>,</p>
+<p>Para garantir a segurança da sua conta e a precisão das informações, solicitamos que confirme o seu cadastro clicando no botão abaixo:</p>
+<a class="button" href="<%= "http://127.0.0.1:3000/confirm_token?confirmation_token=#{@user.confirmation_token}" %>" target="_blank"><span style="color: #fff;">Confirmar Cadastro</span></a>

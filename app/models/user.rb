@@ -18,6 +18,13 @@ class User < ApplicationRecord
   normalizes :email, with: -> { _1.strip.downcase }
   normalizes :name, with: -> { _1.gsub(/\d/, '').strip }
 
+  # Public methods
+  def generate_confirmation_token
+    self.confirmation_token = SecureRandom.urlsafe_base64
+    self.confirmation_token_sent_at = Time.now
+    save
+  end
+
   # Private methods
   private
 
