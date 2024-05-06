@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   # Relationships
   has_many :contacts, dependent: :destroy
+  has_one :address, as: :addressable
+  has_many :phones, as: :phoneble
 
   # Validates
   validates :name, :password_digest, :email, presence: true
